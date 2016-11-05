@@ -1,9 +1,6 @@
-(function() {
+angular.module('Namegame', ['ui.router'])
+.config(function($stateProvider, $urlRouterProvider){
 
-	angular.module('Namegame', ['ui.router']);
-
-	function config($stateProvider, $urlRouterProvider){
-	
 	$stateProvider
 		.state('app',{
 			url  : '/',
@@ -24,11 +21,21 @@
 		})		
 
 	$urlRouterProvider.otherwise('/');
-	};
+	})
 
-	angular
-    .module('Namegame')
-    .config(['$stateProvider', '$urlRouterProvider', config]);
-    //.run(['$rootScope', '$location', 'authentication', run]);
+.directive('personTile', function(){
 
-})();
+	return {
+		retrict: 'A',
+		scope: {
+			p: '=person'  // private scope containing object p
+		},		
+		templateUrl: 'views/person-template.html',
+		link: function (scope, elem, attrs) {
+			scope.hello = function() {
+				alert("hello, this is " + scope.p.name)
+			}
+		}
+	}
+})
+

@@ -1,1 +1,13 @@
-test1
+ <div class="container" ng-controller="HomeController">
+
+ 	<!-- without custom directive -->
+ 	<!-- <div class="tile" ng-repeat="p in persons">
+ 		<h3>{{p.name}}</h3>
+ 		<img width="100" ng-src="{{p.url}}">
+ 	</div> -->
+
+ 	<div ng-repeat="p in persons">
+ 		<div person-tile person="p"></div>
+ 	</div>
+
+ </div>
